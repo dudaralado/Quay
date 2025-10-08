@@ -1,0 +1,42 @@
+BUILDLOGS_REDIS:
+    host: $FQDN
+    password: strongpassword
+    port: 6379
+CREATE_NAMESPACE_ON_PUSH: true
+DATABASE_SECRET_KEY: a8c2744b-7004-4af2-bcee-e417e7bdd235
+DB_URI: postgresql://quayuser:quaypass@$FQDN:5432/quaydb
+DISTRIBUTED_STORAGE_CONFIG:
+    default:
+        - LocalStorage
+        - storage_path: /datastorage/registry
+DISTRIBUTED_STORAGE_DEFAULT_LOCATIONS: []
+DISTRIBUTED_STORAGE_PREFERENCE:
+    - default
+FEATURE_MAILING: false
+PERMANENTLY_DELETE_TAGS: true
+PREFERRED_URL_SCHEME: http
+QUOTA_TOTAL_DELAY_SECONDS: 1800
+REGISTRY_TITLE: Project Quay
+REGISTRY_TITLE_SHORT: Project Quay
+REPO_MIRROR_INTERVAL: 30
+REPO_MIRROR_TLS_VERIFY: true
+RESET_CHILD_MANIFEST_EXPIRATION: true
+SEARCH_MAX_RESULT_PAGE_COUNT: 10
+SEARCH_RESULTS_PER_PAGE: 10
+SECRET_KEY: e9bd34f4-900c-436a-979e-7530e5d74ac8
+SERVER_HOSTNAME: $FQDN
+SETUP_COMPLETE: true
+USER_EVENTS_REDIS:
+    host: $FQDN
+    password: strongpassword
+    port: 6379
+SUPER_USERS:
+  - quayadmin
+  - quayadm
+  - eduardo
+TAG_EXPIRATION_OPTIONS:
+  - 1s
+  - 1d
+  - 1w
+  - 2w
+  - 4w
