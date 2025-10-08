@@ -199,6 +199,6 @@ To make sure our image has been pushed successfully, we can check it using `skop
 ```
 Now we have Quay registry up running !!!  
 
-$\color{Red}\large{\textsf{Next Steps}}$
+$\color{Red}\Huge{\textsf{Next Steps}}$
 * **Add Clair to the Quay registry, for image vulnarability scanner.**  
 vulnerability scanner detects security weaknesses like known software vulnerabilities (CVEs), misconfigurations, and embedded secrets within container images, often by scanning the base image, application dependencies, and infrastructure-as-code files
