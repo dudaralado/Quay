@@ -1,6 +1,6 @@
 # Quay Deployment POC
 
-On this reposiry I had documented my learn path to use Red Hat Quay.
+On this repository I had documented my learn path to use Red Hat Quay.
 It is separate on few segmets.
 + **Deploy a simple Quay registry.**
   - Deploy Redis
@@ -17,7 +17,7 @@ $ podman network create quay-net
 ``````
 
 We will need to create a directory to storage the configuration files and container images for our Quay registry  
-Create the repository  
+Create the directory  
 ```
 $ mkdir ~/QUAYDATA
 ```

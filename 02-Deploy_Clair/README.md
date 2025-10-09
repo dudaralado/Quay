@@ -31,15 +31,15 @@ $ skopeo list-tags docker://docker.io/library/postgres
 ```
 Run the following command to deploy Postgres:
 ```
-  $ podman run -d  -p 5433:5432 \
-    --name postgresql-clairv4 \
-    --network quay-net \
-    -e DEBUGLOG=true \
-    -e POSTGRES_USER=clairuser \
-    -e POSTGRES_DB=clairdb \
-    -e POSTGRES_PASSWORD=clairpass \
-    -v $QUAY/postgres:/var/lib/pgsql/data:Z \
-    docker.io/library/postgres:latest
+$ podman run -d  -p 5433:5432 \
+  --name postgresql-clairv4 \
+  --network quay-net \
+  -e DEBUGLOG=true \
+  -e POSTGRES_USER=clairuser \
+  -e POSTGRES_DB=clairdb \
+  -e POSTGRES_PASSWORD=clairpass \
+  -v $QUAY/postgres:/var/lib/pgsql/data:Z \
+  docker.io/library/postgres:latest
 ```
 
 We need to ensure that the Postgres uuid-ossp module is installed by running the following command:
