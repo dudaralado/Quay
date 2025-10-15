@@ -1,5 +1,3 @@
-#Numark Party Mix II Quay Deployment POC   
-s
 On this repository I had documented my learn path to use Red Hat Quay. It is separate on few segmets.  
 - Creating a Certificate Authority   
 - Creatting a host Certificate  
