@@ -1,6 +1,6 @@
 # Quay Deployment POC
 
-On this reposiry I had documented my learn path to use Red Hat Quay.
+On this repository I had documented my learn path to use Red Hat Quay.
 It is separate on few segmets.
 + **Deploy a simple Quay registry.**
   - Deploy Redis

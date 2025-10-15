@@ -10,6 +10,17 @@ It is separate on few segmets.
 ## Deploy a simple Quay registry
 On this Lab we will run Quay as a nonroot user, so we will need to do some pre-configuration.
 
+We need to configure the firewall to accept access to few ports.
+```
+sudo firewall-cmd --permanent --add-port=80/tcp
+sudo firewall-cmd --permanent --add-port=443/tcp
+sudo firewall-cmd --permanent --add-port=5432/tcp
+sudo firewall-cmd --permanent --add-port=5433/tcp
+sudo firewall-cmd --permanent --add-port=6379/tcp
+sudo firewall-cmd --reload
+
+```
+
 We will need to create a new container network, with this the container will communicate each other without issues.  
 This could be achieve by runnind the command bellow:  
 ```
@@ -92,10 +103,10 @@ $ mkdir -p $QUAY/quay/storage
 ```
 Now let's set the correct permission to this direcory.   
 ```
-$ sudo setfacl -Rm u:1001:-wx $QUAY/quay/storage
-$ sudo setfacl -Rm g:1001:-wx $QUAY/quay/storage
-$ sudo setfacl -Rm g:$USER:-wx $QUAY/quay/storage
-$ sudo setfacl -Rm u:$USER:-wx $QUAY/quay/storage
+$ setfacl -Rm u:1001:-wx $QUAY/quay/storage
+$ setfacl -Rm g:1001:-wx $QUAY/quay/storage
+$ setfacl -Rm g:$USER:-wx $QUAY/quay/storage
+$ setfacl -Rm u:$USER:-wx $QUAY/quay/storage
 ```
 
 Now that we have the directories we need to have a Quay configuration file, lest create on using `cat` command  
@@ -117,6 +128,7 @@ DISTRIBUTED_STORAGE_DEFAULT_LOCATIONS: []
 DISTRIBUTED_STORAGE_PREFERENCE:
     - default
 FEATURE_MAILING: false
+FEATURE_USER_INITIALIZE: true
 PERMANENTLY_DELETE_TAGS: true
 PREFERRED_URL_SCHEME: http
 QUOTA_TOTAL_DELAY_SECONDS: 1800
@@ -161,6 +173,18 @@ $ podman run -d -p 80:8080 -p 443:8443 -p 9091:9091 \
    quay.io/projectquay/quay:latest
 ```
 
+$\color{Red}\small{\textbf{You may face the issue below}}$
+> Error: rootlessport cannot expose privileged port 80, you can add 'net.ipv4.ip_unprivileged_port_start=80' to /etc/sysctl.conf (currently 1024), or choose a larger port number (>= 1024): listen tcp 0.0.0.0:80: bind: permission denied
+
+To fix it run the command:   
+```
+$ sudo sh -c 'echo "net.ipv4.ip_unprivileged_port_start=80" >> /etc/sysctl.conf'
+$ sudo sysctl -p
+```
+Then start the quay pod:  
+```
+$ podman start quay
+```
 Let's create our first user via CLI and test some push and pull against the Quay image registry.
 
 To cretae the user we could run the following command:

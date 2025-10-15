@@ -146,7 +146,7 @@ scanned
 ```
 As show above the image had been scanned, we also can see how many vunerabilities had been detected by running:
 ```
-$ curl -s -k -u "quayadm:quayadmin" "http://quay01.nuc.lab/api/v1/repository/quayadm/quay/manifest/sha256:53160e6ee9d7d19cc62fa0488fa9db3d990a4b0a252eb3157d2238d05d74ec90/security" | jq |grep Severity|wc -l
+$ curl -s -k -u "quayadm:quayadmin" "http://<QUAY_FQDN>/api/v1/repository/quayadm/quay/manifest/sha256:53160e6ee9d7d19cc62fa0488fa9db3d990a4b0a252eb3157d2238d05d74ec90/security" | jq |grep Severity|wc -l
 511
 ```
 On this case the image has 511 vulnerabilities. This information can be also visualized through the web UI.
