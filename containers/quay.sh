@@ -30,3 +30,13 @@ podman run -d -p 80:8080 -p 443:8443 -p 9091:9091 \
    -v $QUAY/quay/config:/conf/stack:Z \
    -v $QUAY/quay/storage:/datastorage:Z \
    quay.io/projectquay/quay:$QUAY_VERSION
+
+## Creating quayadm user
+echo "Creating a quayadm user"
+sleep 5
+curl -X POST -k "https://$IP/api/v1/user/initialize" \
+            --header 'Content-Type: application/json' \
+            --data '{ "username": "quayadm", "password": "quayadmin", "email": "quayadm@quay.lab", "access_token": true }' 
+
+echo "username = quayadm"
+echo "password = quayadmin"
