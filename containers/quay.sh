@@ -11,7 +11,7 @@ cat <<'EOF'
            🚀 Deploying QUAY
 EOF
 
-cp  ~/QuayNEW/configs/config.yaml  $QUAY/quay/config
+cp  ~/Quay/configs/config.yaml  $QUAY/quay/config
 
 SERVER=$(hostname --fqdn)
 
