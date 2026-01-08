@@ -15,7 +15,7 @@ cp  ~/QuayNEW/configs/config.yaml  $QUAY/quay/config
 
 SERVER=$(hostname --fqdn)
 
-sed "s/\$FQDN/$SERVER/g" ~/QuayNEW/configs/config.yaml > "$QUAY/quay/config/config.yaml"
+sed "s/\$FQDN/$SERVER/g" ~/Quay/configs/config.yaml > "$QUAY/quay/config/config.yaml"
 
 sudo setfacl -Rm u:1001:-wx $QUAY/quay/storage
 sudo setfacl -Rm g:1001:-wx $QUAY/quay/storage
