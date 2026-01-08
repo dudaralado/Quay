@@ -6,6 +6,8 @@ export QUAY=~/QUAYDEPLOYMENT
 mkdir -p $QUAY/quay/config/extra_ca_certs
 mkdir -p $QUAY/quay/storage
 
+## Creating podman network "quaynet"
+podman network create quaynet
 
 ## Export username, hostname and IP Address
 export USER=$(whoami)
