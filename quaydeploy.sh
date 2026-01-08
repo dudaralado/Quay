@@ -6,6 +6,13 @@ export QUAY=~/QUAYDEPLOYMENT
 mkdir -p $QUAY/quay/config/extra_ca_certs
 mkdir -p $QUAY/quay/storage
 
+## Required packages
+sudo dnf install podman skopeo acl -y
+
+## Setting correct permission to run Quay on unprivilage tcp ports
+sudo sh -c 'echo "net.ipv4.ip_unprivileged_port_start=80" >> /etc/sysctl.conf'
+sudo sysctl -p
+
 ## Creating podman network "quaynet"
 podman network create quaynet
 
